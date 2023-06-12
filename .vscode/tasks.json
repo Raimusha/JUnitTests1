@@ -82,16 +82,17 @@
       "problemMatcher": []
     },
     {
-      "label": "Check ",
+      "label": "Run tests for CalculatorTest",
       "type": "shell",
       "command": "${config:ummBinaryPath}",
+      "group": "test",
       "args": [
         {
-          "value": "check",
+          "value": "test",
           "quoting": "escape"
         },
         {
-          "value": "",
+          "value": "Calculator.CalculatorTest",
           "quoting": "escape"
         }
       ],
@@ -102,7 +103,52 @@
       "problemMatcher": []
     },
     {
-      "label": "Check JavaDoc for ",
+      "label": "Run specific test from CalculatorTest",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "group": "test",
+      "args": [
+        {
+          "value": "test",
+          "quoting": "escape"
+        },
+        {
+          "value": "Calculator.CalculatorTest",
+          "quoting": "escape"
+        },
+        {
+          "value": "${input:Calculator.CalculatorTest}",
+          "quoting": "escape"
+        }
+      ],
+      "dependsOn": [
+        "Set umm to be executable"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "Check CalculatorTest",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "check",
+          "quoting": "escape"
+        },
+        {
+          "value": "Calculator.CalculatorTest",
+          "quoting": "escape"
+        }
+      ],
+      "dependsOn": [
+        "Set umm to be executable"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "Check JavaDoc for CalculatorTest",
       "type": "shell",
       "command": "${config:ummBinaryPath}",
       "args": [
@@ -111,7 +157,7 @@
           "quoting": "escape"
         },
         {
-          "value": "",
+          "value": "Calculator.CalculatorTest",
           "quoting": "escape"
         }
       ],
@@ -219,6 +265,18 @@
     }
   ],
   "inputs": [
+    {
+      "type": "pickString",
+      "id": "Calculator.CalculatorTest",
+      "description": "Which test to run?",
+      "options": [
+        "testAdd",
+        "testSubtract",
+        "testMultiply",
+        "testDivide"
+      ],
+      "default": "testAdd"
+    },
     {
       "type": "pickString",
       "id": "gradable_assignments",

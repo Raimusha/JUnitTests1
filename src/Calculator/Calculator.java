@@ -53,10 +53,8 @@ public class Calculator {
      * @throws ArithmeticException
      */
     public int divide() throws ArithmeticException {
-        if (rhs == 0) {
-            throw new ArithmeticException("Cannot divide by zero");
-        }
-
         return lhs / rhs;
+
+        
     }
 }
